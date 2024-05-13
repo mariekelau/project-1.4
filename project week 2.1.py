@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # parameters
 k = 34  # veerconstante in N/m
-m = 1.5682*10**-3  # massa in kilogram
+m = 1.5682*10**-6  # massa in kilogram
 b = 0.03651 # b-waarde
 
 
