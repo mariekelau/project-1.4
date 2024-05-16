@@ -57,36 +57,42 @@ versnellingen2 = bereken_afgeleiden(tijden2, snelheden2)
 respons1 = bereken_respons(tijden1, versnellingen1, m, b, k)
 respons2 = bereken_respons(tijden2, versnellingen2, m, b, k)
 
-fig, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(14, 6))
 
-# Eerste subplot
-ax1.plot(tijden1, versnellingen1, label='Versnelling')
+fig, ax1 = plt.subplots()
+
+color = 'tab:blue'
 ax1.set_xlabel('Tijd (s)')
-ax1.set_ylabel('Versnelling (m/s^2)')
-ax1.set_title('Versnelling van Dataset 1')
-ax1.legend()
+ax1.set_ylabel('Versnelling (m/s^2)', color=color)
+ax1.plot(tijden1, versnellingen1, color=color)
+ax1.tick_params(axis='y', labelcolor=color)
 
-# Tweede subplot
-ax2.plot(tijden1, respons1, label='Respons', linestyle='--', color='red')
-ax2.set_xlabel('Tijd (s)')
-ax2.set_ylabel('Respons')
-ax2.set_title('Respons van Dataset 1')
-ax2.legend()
+ax2 = ax1.twinx()  # Exemplaar maken van een tweede as die dezelfde x-as deelt
 
-# Derde subplot
-ax3.plot(tijden2, versnellingen2, label='Versnelling')
+color = 'tab:red'
+ax2.set_ylabel('Respons',  color=color)
+ax2.plot(tijden1, respons1, linestyle='--', color=color)
+ax2.tick_params(axis='y', labelcolor=color)
+
+fig.tight_layout()  # Anders wordt het rechter y-label iets bijgesneden
+plt.title('dataset 1')
+plt.show()
+
+
+fig, ax3 = plt.subplots()
+
+color = 'tab:blue'
 ax3.set_xlabel('Tijd (s)')
-ax3.set_ylabel('Versnelling (m/s^2)')
-ax3.set_title('Versnelling van Dataset 2')
-ax3.legend()
+ax3.set_ylabel('Versnelling (m/s^2)', color=color)
+ax3.plot(tijden2, versnellingen2, color=color)
+ax3.tick_params(axis='y', labelcolor=color)
 
-# Vierde subplot
-ax4.plot(tijden2, respons2, label='Respons', linestyle='--', color='red')
-ax4.set_xlabel('Tijd (s)')
-ax4.set_ylabel('Respons')
-ax4.set_title('Respons van Dataset 2')
-ax4.legend()
+ax4 = ax3.twinx()  # Exemplaar maken van een tweede as die dezelfde x-as deelt
+color = 'tab:red'
+ax4.set_ylabel('Respons', color=color) 
+ax4.plot(tijden2, respons2, linestyle='--', color=color)
+ax4.tick_params(axis='y', labelcolor=color)
 
-plt.tight_layout()
+fig.tight_layout()  # Anders wordt het rechter y-label iets bijgesneden
+plt.title('dataset 2')
 plt.show()
 
